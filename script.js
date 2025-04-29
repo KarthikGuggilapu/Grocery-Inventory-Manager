@@ -308,17 +308,39 @@ function filterItems(keyword) {
 }
 
 // English to Telugu translation
+// async function translateToTelugu(text) {
+//   try {
+//     const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|te`);
+//     const data = await res.json();
+//     return data.responseData.translatedText || text;
+//   } catch (error) {
+//     console.error('Translation error:', error);
+//     showToast('Translation failed. Using English text instead.', 'warning');
+//     return text;
+//   }
+// }
+
 async function translateToTelugu(text) {
   try {
-    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|te`);
-    const data = await res.json();
-    return data.responseData.translatedText || text;
+    showToast(text);
+    const url = `https://aksharamukha-plugin.appspot.com/api/public?source=HK&target=Telugu&text=${encodeURIComponent(text)}`;
+    const res = await fetch(url);
+    const responseText = await res.text();
+
+    console.log('Aksharamukha API response:', responseText);
+    showToast(responseText);
+
+    // The API directly returns the converted text (like "మినువులు")
+    return responseText;
   } catch (error) {
-    console.error('Translation error:', error);
-    showToast('Translation failed. Using English text instead.', 'warning');
+    console.error('Transliteration error:', error);
+    showToast('Transliteration failed. Using English text instead.', 'warning');
     return text;
   }
 }
+
+
+
 
 // Edit item
 window.editItem = async (id) => {
