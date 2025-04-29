@@ -1,0 +1,115 @@
+/* Custom styles beyond Tailwind */
+
+/* Improved Telugu font rendering */
+.telugu-text {
+    font-family: 'Noto Sans Telugu', sans-serif;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Loader animation */
+  .loader {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+  
+  /* Table responsive styles */
+  @media (max-width: 768px) {
+    table {
+      border: 0;
+    }
+    
+    table thead {
+      display: none;
+    }
+    
+    table tr {
+      margin-bottom: 8px;
+      display: block;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    table td {
+      display: block;
+      text-align: left;
+    }
+  }
+  
+  /* Animations for modals and notifications */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Input focus state */
+  input:focus, button:focus {
+    outline: 2px solid #22c55e;
+    outline-offset: 1px;
+  }
+  
+  /* Price formatting */
+  .price {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Empty state styling */
+  .empty-state {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #6b7280;
+  }
+  
+  .empty-state svg {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  
+  /* Animate spin for loading states */
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
