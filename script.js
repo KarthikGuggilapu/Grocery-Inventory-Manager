@@ -171,13 +171,10 @@ confirmDeleteBtn.addEventListener('click', async () => {
 function showItemDetails(item) {
   itemDetails.innerHTML = `
     <div class="space-y-3">
+      
       <div>
-        <label class="text-sm text-gray-500">English Name</label>
-        <p class="text-lg font-medium">${escapeHtml(item.name_eng)}</p>
-      </div>
-      <div>
-        <label class="text-sm text-gray-500">Telugu Name</label>
-        <p class="text-lg font-medium telugu-text">${escapeHtml(item.name_tel)}</p>
+        <label class="text-sm text-gray-500">Item Name</label>
+        <p class="text-lg font-medium telugu-text">${escapeHtml(item.name_tel)} (${escapeHtml(item.name_eng)})</p>
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div>
@@ -248,8 +245,8 @@ function displayItems(data) {
           <td class="p-4">
             <div class="flex justify-between items-center">
               <div>
-                <div class="font-medium">${escapeHtml(item.name_eng)}</div>
-                <div class="text-sm text-gray-500 telugu-text">${escapeHtml(item.name_tel)}</div>
+                <div class="font-medium">${escapeHtml(item.name_tel)}</div>
+                <div class="text-sm text-gray-500 telugu-text">${escapeHtml(item.name_eng)}</div>
               </div>
               <div class="text-lg font-medium">₹${formatPrice(item.retail_price)}</div>
             </div>
@@ -261,10 +258,9 @@ function displayItems(data) {
     return `
       <tr class="hover:bg-gray-50 transition-colors duration-150">
         <td class="p-3">${index + 1}</td>
-        <td class="p-3">${escapeHtml(item.name_eng)}</td>
-        <td class="p-3 telugu-text">${escapeHtml(item.name_tel)}</td>
+        <td class="p-3 telugu-text font-medium">${escapeHtml(item.name_tel)} <span class="text-sm text-gray-400">(${escapeHtml(item.name_eng)})</span></td>
         <td class="p-3 price">₹${formatPrice(item.wholesale_price)}</td>
-        <td class="p-3 price">₹${formatPrice(item.retail_price)}</td>
+        <td class="p-3 price ">₹${formatPrice(item.retail_price)}</td>
         <td class="p-3 flex justify-center gap-2">
           <button 
             onclick="editItem('${item.id}')" 
@@ -323,7 +319,7 @@ function filterItems(keyword) {
 async function translateToTelugu(text) {
   try {
     showToast(text);
-    const url = `https://aksharamukha-plugin.appspot.com/api/public?source=HK&target=Telugu&text=${encodeURIComponent(text)}`;
+    const url = `https://aksharamukha-plugin.appspot.com/api/public?source=RomanReadable&target=Telugu&text=${encodeURIComponent(text)}`;
     const res = await fetch(url);
     const responseText = await res.text();
 
@@ -338,8 +334,6 @@ async function translateToTelugu(text) {
     return text;
   }
 }
-
-
 
 
 // Edit item
