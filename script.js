@@ -245,8 +245,8 @@ function displayItems(data) {
           <td class="p-4">
             <div class="flex justify-between items-center">
               <div>
-                <div class="font-medium">${escapeHtml(item.name_tel)}</div>
-                <div class="text-sm text-gray-500 telugu-text">${escapeHtml(item.name_eng)}</div>
+                <div class="font-medium telugu-text text-lg">${escapeHtml(item.name_tel)}</div>
+                <div class="text-sm text-gray-400 telugu-text">${escapeHtml(item.name_eng)}</div>
               </div>
               <div class="text-lg font-medium">₹${formatPrice(item.retail_price)}</div>
             </div>
